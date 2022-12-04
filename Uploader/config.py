@@ -20,53 +20,110 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE
 
-import os
-
-import logging
-
-logging.basicConfig(
-    format='%(name)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('log.txt'),
-              logging.StreamHandler()],
-    level=logging.INFO
-)
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-class Config(object):
-    WEBHOOK = os.environ.get("BOT_TOKEN", False)
-    # get a token from @BotFather
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5838279749:AAF2NNAVAN-rL9iEb_kwVNigU6IJcJomK3I")
-    # The Telegram API things
-    API_ID = int(os.environ.get("API_ID", 7978114))
-    API_HASH = os.environ.get("API_HASH", "5f7839feeba133497f24acfd005ef2ec")
-    # Get these values from my.telegram.org
-    # Array to store users who are authorized to use the bot
+class Translation(object):
 
-    # file /video dpwnload location
-    DOWNLOAD_LOCATION = "./DOWNLOADS"
+    START_TEXT = """
+Hi {} 
 
-    MEGA_EMAIL = os.environ.get("MEGA_EMAIL", "ngahtut.kho@gmail.com")
-    # If deploying on vps edit the above value as example := Mega_email = "Your-Mega_email-inside-inverted-commas."
+I am Powerful Url Uploader Bot By @NgaHtutmm
+ 
+"""
 
-    # This is not necessary! Enter your mega password only if you have a mega.nz account with pro/business features.
-    MEGA_PASSWORD = os.environ.get("MEGA_PASSWORD", "505953KhoPep$")
-    # If deploying on vps edit the above value as example := Mega_password = "Your-Mega_password-inside-inverted-commas."
-    # Telegram maximum file upload size
-    TG_MAX_FILE_SIZE = 4194304000
+    HELP_TEXT = """
 
-    # chunk size that should be used with requests
-    CHUNK_SIZE = int(os.environ.get("CHUNK_SIZE", 128))
-    # proxy for accessing youtube-dl in GeoRestricted Areas
-    # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
-    HTTP_PROXY = os.environ.get("HTTP_PROXY", "")
+# Send me the Google Drive | ytdl | direct links.
 
-    # set timeout for subprcess
-    PROCESS_MAX_TIMEOUT = 3700
+# Select the desired option.
 
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", -100))
-    OWNER_ID = int(os.environ.get("OWNER_ID", "1760280598"))
-    BOT_USERNAME = os.environ.get("BOT_USERNAME", "UrlUploaderBot")
-    ADL_BOT_RQ = {}
-    AUTH_USERS = list({int(x)
-                      for x in os.environ.get("AUTH_USERS", "0").split()})
-    AUTH_USERS.append(OWNER_ID)
+# Then be relaxed your file will be uploaded soon..
+ 
+"""
+
+# give credit to developer
+
+    ABOUT_TEXT = """
+<b>♻️ My Name</b> : Url Uploader Bot By @NgaHtutmm
+
+<b>🌀 Channel</b> : <a href="https://t.me/onechanneloffical">One Channel</a>
+
+<b>🌺 Heroku</b> : <a href="https://heroku.com/">Heroku</a>
+
+<b>📑 Language :</b> <a href="https://www.python.org/">Python 3.10.5</a>
+
+<b>🇵🇲 Framework :</b> <a href="https://docs.pyrogram.org/">Pyrogram 2.0.30</a>
+
+<b>👲 Developer :</b> <a href="https://t.me/NgaHtutmm">@NgaHtutmm</a>
+
+"""
+
+    PROGRESS = """
+🔰 Speed : {3}/s\n\n
+🌀 Done : {1}\n\n
+🎥 Tᴏᴛᴀʟ sɪᴢᴇ  : {2}\n\n
+⏳ Tɪᴍᴇ ʟᴇғᴛ : {4}\n\n
+"""
+    ID_TEXT = """
+🆔 Your Telegram ID 𝐢𝐬 :- <code>{}</code>
+"""
+
+    INFO_TEXT = """
+
+ 🤹 First Name : <b>{}</b>
+
+ 🚴‍♂️ Second Name : <b>{}</b>
+
+ 🧑🏻‍🎓 Username : <b>@{}</b>
+
+ 🆔 Telegram Id : <code>{}</code>
+
+ 📇 Profile Link : <b>{}</b>
+
+ 📡 Dc : <b>{}</b>
+
+ 📑 Language : <b>{}</b>
+
+ 👲 Status : <b>{}</b>
+"""
+
+    START_BUTTONS = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton('❓ Help', callback_data='help'),
+            InlineKeyboardButton('🦊 About', callback_data='about')
+        ], [
+            InlineKeyboardButton('📛 Close', callback_data='close')
+        ]]
+    )
+    HELP_BUTTONS = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton('🏠 Home', callback_data='home'),
+            InlineKeyboardButton('🦊 About', callback_data='about')
+        ], [
+            InlineKeyboardButton('📛 Close', callback_data='close')
+        ]]
+    )
+    ABOUT_BUTTONS = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton('🏠 Home', callback_data='home'),
+            InlineKeyboardButton('❓ Help', callback_data='help')
+        ], [
+            InlineKeyboardButton('📛 Close', callback_data='close')
+        ]]
+    )
+    BUTTONS = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton('📛 Close', callback_data='close')
+        ]]
+    )
+    FORMAT_SELECTION = "Now Select the desired formats"
+    SET_CUSTOM_USERNAME_PASSWORD = """"""
+    DOWNLOAD_START = "Trying to Download ⌛\n\n <i>{} </i>"
+    UPLOAD_START = "<i>{} </i>\n\n📤 Uploading Please Wait "
+    RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 2GB due to Telegram API limitations."
+    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Dᴏᴡɴʟᴏᴀᴅᴇᴅ ɪɴ {} sᴇᴄᴏɴᴅs.\n\nTʜᴀɴᴋs Fᴏʀ Usɪɴɢ Mᴇ\n\nUᴘʟᴏᴀᴅᴇᴅ ɪɴ {} sᴇᴄᴏɴᴅs"
+    FF_MPEG_DEL_ETED_CUSTOM_MEDIA = "✅ Media cleared succesfully."
+    CUSTOM_CAPTION_UL_FILE = " "
+    NO_VOID_FORMAT_FOUND = "ERROR... <code>{}</code>"
+    SLOW_URL_DECED = "Gosh that seems to be a very slow URL. Since you were screwing my home, I am in no mood to download this file. Meanwhile, why don't you try this:==> https://shrtz.me/PtsVnf6 and get me a fast URL so that I can upload to Telegram, without me slowing down for other users."
