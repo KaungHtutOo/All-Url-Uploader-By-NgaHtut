@@ -16,9 +16,9 @@ filetype
 tldextract
 aiofiles
 pyromod
-yt-dlp
+git+https://github.com/KaungHtutOo/nhdl
 filesplit==4.0.0
 mega.py
 opencc
 wget
-youtube_dl
+git+https://github.com/KaungHtutOo/nhydl
