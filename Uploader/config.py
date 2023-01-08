@@ -35,7 +35,7 @@ logging.basicConfig(
 class Config(object):
     WEBHOOK = os.environ.get("BOT_TOKEN", False)
     # get a token from @BotFather
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5838279749:AAF2NNAVAN-rL9iEb_kwVNigU6IJcJomK3I")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5814993116:AAH0fpEmjl9HkINH7FUDxAKocq7CCJb5RjU")
     # The Telegram API things
     API_ID = int(os.environ.get("API_ID", 7978114))
     API_HASH = os.environ.get("API_HASH", "5f7839feeba133497f24acfd005ef2ec")
@@ -46,7 +46,7 @@ class Config(object):
     DOWNLOAD_LOCATION = "./DOWNLOADS"
 
     MEGA_EMAIL = os.environ.get("MEGA_EMAIL", "ngahtut.kho@gmail.com")
-    # If deploying on vps edit the above value as example := Mega_email = "Your-Mega_email-inside-inverted-commas."
+    # If deploying on vps edit the above value as example := Mega_email = "505953KhoPep$"
 
     # This is not necessary! Enter your mega password only if you have a mega.nz account with pro/business features.
     MEGA_PASSWORD = os.environ.get("MEGA_PASSWORD", "505953KhoPep$")
